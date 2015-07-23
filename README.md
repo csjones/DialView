@@ -1,5 +1,9 @@
 # Dial View
 
+![](Resources/Plain.gif) ![](Resources/WithRace.gif)
+
+![](Resources/Inspectables.png)
+
 ## License
 
 >Copyright (c) 2015 Tyler Bell
