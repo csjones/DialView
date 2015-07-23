@@ -12,18 +12,47 @@
 		D50B9B8A1B5F1C7700A50303 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D50B9B881B5F1C7700A50303 /* Main.storyboard */; };
 		D50B9B8C1B5F1C7700A50303 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D50B9B8B1B5F1C7700A50303 /* Images.xcassets */; };
 		D50B9B8F1B5F1C7700A50303 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50B9B8D1B5F1C7700A50303 /* LaunchScreen.xib */; };
-		D50B9B9B1B5F1C7700A50303 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B9B9A1B5F1C7700A50303 /* DemoTests.swift */; };
+		D50B9BB31B60074200A50303 /* DialView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50B9BB01B60073C00A50303 /* DialView.framework */; };
+		D50B9BB41B60074200A50303 /* DialView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D50B9BB01B60073C00A50303 /* DialView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D50B9B951B5F1C7700A50303 /* PBXContainerItemProxy */ = {
+		D50B9BAF1B60073C00A50303 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D50B9B771B5F1C7700A50303 /* Project object */;
+			containerPortal = D50B9BAA1B60073C00A50303 /* DialView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D55028941B482ADC0051322E;
+			remoteInfo = DialView;
+		};
+		D50B9BB11B60073C00A50303 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D50B9BAA1B60073C00A50303 /* DialView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D550289E1B482ADC0051322E;
+			remoteInfo = DialViewTests;
+		};
+		D50B9BB51B60074200A50303 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D50B9BAA1B60073C00A50303 /* DialView.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D50B9B7E1B5F1C7700A50303;
-			remoteInfo = Demo;
+			remoteGlobalIDString = D55028931B482ADC0051322E;
+			remoteInfo = DialView;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D50B9BB71B60074200A50303 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D50B9BB41B60074200A50303 /* DialView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D50B9B7F1B5F1C7700A50303 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,9 +62,7 @@
 		D50B9B891B5F1C7700A50303 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D50B9B8B1B5F1C7700A50303 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D50B9B8E1B5F1C7700A50303 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D50B9B941B5F1C7700A50303 /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D50B9B991B5F1C7700A50303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D50B9B9A1B5F1C7700A50303 /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
+		D50B9BAA1B60073C00A50303 /* DialView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DialView.xcodeproj; path = ../DialView.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,13 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D50B9B911B5F1C7700A50303 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				D50B9BB31B60074200A50303 /* DialView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +80,9 @@
 		D50B9B761B5F1C7700A50303 = {
 			isa = PBXGroup;
 			children = (
-				D50B9B811B5F1C7700A50303 /* Demo */,
-				D50B9B971B5F1C7700A50303 /* DemoTests */,
+				D50B9B811B5F1C7700A50303 /* Source */,
 				D50B9B801B5F1C7700A50303 /* Products */,
+				D50B9BA91B60073200A50303 /* External */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,12 +90,11 @@
 			isa = PBXGroup;
 			children = (
 				D50B9B7F1B5F1C7700A50303 /* Demo.app */,
-				D50B9B941B5F1C7700A50303 /* DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D50B9B811B5F1C7700A50303 /* Demo */ = {
+		D50B9B811B5F1C7700A50303 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				D50B9B841B5F1C7700A50303 /* AppDelegate.swift */,
@@ -84,6 +104,7 @@
 				D50B9B8D1B5F1C7700A50303 /* LaunchScreen.xib */,
 				D50B9B821B5F1C7700A50303 /* Supporting Files */,
 			);
+			name = Source;
 			path = Demo;
 			sourceTree = "<group>";
 		};
@@ -95,21 +116,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D50B9B971B5F1C7700A50303 /* DemoTests */ = {
+		D50B9BA91B60073200A50303 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				D50B9B9A1B5F1C7700A50303 /* DemoTests.swift */,
-				D50B9B981B5F1C7700A50303 /* Supporting Files */,
+				D50B9BAA1B60073C00A50303 /* DialView.xcodeproj */,
 			);
-			path = DemoTests;
+			name = External;
 			sourceTree = "<group>";
 		};
-		D50B9B981B5F1C7700A50303 /* Supporting Files */ = {
+		D50B9BAB1B60073C00A50303 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D50B9B991B5F1C7700A50303 /* Info.plist */,
+				D50B9BB01B60073C00A50303 /* DialView.framework */,
+				D50B9BB21B60073C00A50303 /* DialViewTests.xctest */,
 			);
-			name = "Supporting Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,33 +143,17 @@
 				D50B9B7B1B5F1C7700A50303 /* Sources */,
 				D50B9B7C1B5F1C7700A50303 /* Frameworks */,
 				D50B9B7D1B5F1C7700A50303 /* Resources */,
+				D50B9BB71B60074200A50303 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D50B9BB61B60074200A50303 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
 			productReference = D50B9B7F1B5F1C7700A50303 /* Demo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D50B9B931B5F1C7700A50303 /* DemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D50B9BA11B5F1C7700A50303 /* Build configuration list for PBXNativeTarget "DemoTests" */;
-			buildPhases = (
-				D50B9B901B5F1C7700A50303 /* Sources */,
-				D50B9B911B5F1C7700A50303 /* Frameworks */,
-				D50B9B921B5F1C7700A50303 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D50B9B961B5F1C7700A50303 /* PBXTargetDependency */,
-			);
-			name = DemoTests;
-			productName = DemoTests;
-			productReference = D50B9B941B5F1C7700A50303 /* DemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -156,15 +161,13 @@
 		D50B9B771B5F1C7700A50303 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = twb;
 				TargetAttributes = {
 					D50B9B7E1B5F1C7700A50303 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					D50B9B931B5F1C7700A50303 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = D50B9B7E1B5F1C7700A50303;
 					};
 				};
 			};
@@ -179,13 +182,35 @@
 			mainGroup = D50B9B761B5F1C7700A50303;
 			productRefGroup = D50B9B801B5F1C7700A50303 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D50B9BAB1B60073C00A50303 /* Products */;
+					ProjectRef = D50B9BAA1B60073C00A50303 /* DialView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D50B9B7E1B5F1C7700A50303 /* Demo */,
-				D50B9B931B5F1C7700A50303 /* DemoTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D50B9BB01B60073C00A50303 /* DialView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DialView.framework;
+			remoteRef = D50B9BAF1B60073C00A50303 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D50B9BB21B60073C00A50303 /* DialViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DialViewTests.xctest;
+			remoteRef = D50B9BB11B60073C00A50303 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D50B9B7D1B5F1C7700A50303 /* Resources */ = {
@@ -195,13 +220,6 @@
 				D50B9B8A1B5F1C7700A50303 /* Main.storyboard in Resources */,
 				D50B9B8F1B5F1C7700A50303 /* LaunchScreen.xib in Resources */,
 				D50B9B8C1B5F1C7700A50303 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D50B9B921B5F1C7700A50303 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,21 +235,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D50B9B901B5F1C7700A50303 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D50B9B9B1B5F1C7700A50303 /* DemoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D50B9B961B5F1C7700A50303 /* PBXTargetDependency */ = {
+		D50B9BB61B60074200A50303 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D50B9B7E1B5F1C7700A50303 /* Demo */;
-			targetProxy = D50B9B951B5F1C7700A50303 /* PBXContainerItemProxy */;
+			name = DialView;
+			targetProxy = D50B9BB51B60074200A50303 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -356,40 +366,6 @@
 			};
 			name = Release;
 		};
-		D50B9BA21B5F1C7700A50303 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-			};
-			name = Debug;
-		};
-		D50B9BA31B5F1C7700A50303 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,14 +385,7 @@
 				D50B9BA01B5F1C7700A50303 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		D50B9BA11B5F1C7700A50303 /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D50B9BA21B5F1C7700A50303 /* Debug */,
-				D50B9BA31B5F1C7700A50303 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
