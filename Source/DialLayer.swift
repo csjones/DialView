@@ -10,9 +10,12 @@ public class DialLayer: CALayer {
     // MARK: Keys
     
     public static let RingColorKey = "ringColor"
-    
-    // MARK:
-    
+    public static let RaceColorKey = "raceColor"
+    public static let RingWidthKey = "ringWidth"
+    public static let RaceWidthKey = "raceWidth"
+    public static let RingStartKey = "ringStart"
+    public static let RingStopKey = "ringStop"
+        
     public override static func needsDisplayForKey(key: String) -> Bool {
         if key == "ringStart"
             || key == "ringStop"
@@ -29,14 +32,13 @@ public class DialLayer: CALayer {
 
     // MARK: Properties
 
-    public var raceColor: UIColor = UIColor.redColor()
-    
-    public var ringColor: UIColor = UIColor.whiteColor()
+    public var raceColor: UIColor = UIColor.clearColor()
+    public var ringColor: UIColor = UIColor.clearColor()
 
     public var raceWidth: CGFloat = 0.0
     
     public var ringWidth: CGFloat = 10.0
-    public var lineCap: CGFloat?
+    public var lineCap: CGLineCap? = .Round
     
     public var ringStart: CGFloat = 0.0
     public var ringStop: CGFloat = 0.0
@@ -65,10 +67,17 @@ public class DialLayer: CALayer {
     // MARK: Drawing
     
     public override func drawInContext(context: CGContext) {
+        CGContextSetFillColorWithColor(context, backgroundColor)
+        CGContextFillRect(context, bounds)
+        
         CGContextSetLineWidth(context, raceWidth)
         CGContextSetStrokeColorWithColor(context, raceColor.CGColor)
         CGContextAddArc(context, bounds.midX, bounds.midY, (bounds.width / 2) - (raceWidth), 0, 360, 0)
         CGContextStrokePath(context)
+        
+        if let lineCap = lineCap {
+            CGContextSetLineCap(context, lineCap)
+        }
         
         CGContextSetLineWidth(context, ringWidth)
         CGContextSetStrokeColorWithColor(context, ringColor.CGColor)

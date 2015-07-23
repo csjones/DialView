@@ -7,25 +7,16 @@ import UIKit
 
 @IBDesignable public class DialView: UIView {
     
-    // MARK: Keys
-    
-    public static let RingColorKey = "ringColor"
-    public static let RaceColorKey = "raceColor"
-    public static let RingWidthKey = "ringWidth"
-    public static let RaceWidthKey = "raceWidth"
-    public static let RingStartKey = "ringStart"
-    public static let RingStopKey = "ringStop"
-    
     // MARK: Properties
     
-    @IBInspectable public var ringColor: UIColor = UIColor.whiteColor() {
+    @IBInspectable public var ringColor: UIColor = UIColor.clearColor() {
         didSet {
             addAction(forKey: "ringColor", toValue: ringColor)
             dialLayer.ringColor = ringColor
         }
     }
     
-    @IBInspectable public var raceColor: UIColor = UIColor.redColor() {
+    @IBInspectable public var raceColor: UIColor = UIColor.clearColor() {
         didSet {
             addAction(forKey: "raceColor", toValue: raceColor)
             dialLayer.raceColor = raceColor
@@ -39,14 +30,14 @@ import UIKit
         }
     }
     
-    @IBInspectable public var raceWidth: CGFloat = 0.0 {
+    @IBInspectable public var raceWidth: CGFloat = 10.0 {
         didSet {
             addAction(forKey: "raceWidth", toValue: raceWidth)
             dialLayer.raceWidth = raceWidth
         }
     }
     
-    @IBInspectable public var lineCap: CGFloat? {
+    @IBInspectable public var lineCap: CGLineCap? = .Round {
         didSet {
             dialLayer.lineCap = lineCap
         }
@@ -66,7 +57,75 @@ import UIKit
         }
     }
     
+    @IBInspectable public var animating: Bool = false {
+        didSet {
+            if animating {
+                beginAnimating()
+            }
+        }
+    }
+    
+    public override var backgroundColor: UIColor? {
+        didSet {
+            if let backgroundColor = backgroundColor {
+                layer.backgroundColor = backgroundColor.CGColor
+            }
+        }
+    }
+
     // MARK: Animation
+    
+    private func beginAnimating() {
+        let width: CGFloat = 3.14 / 2
+        let increment: CGFloat = 6.28
+        let duration: Double = 0.66
+        
+        var start: CGFloat = 6.28 * 0.75
+        
+        func loop() {
+            ringStop = start + width
+            ringStart = start
+
+            if !animating {
+                UIView.animateWithDuration(duration * (1 - Double(width / increment)), delay: 0.0, options: [.CurveLinear], animations: { [weak self] () -> Void in
+                    if let sself = self {
+                        sself.ringStop = start + increment
+                        sself.ringStart = start + increment - width
+                    }
+                }, completion: { (completed) -> Void in
+                    UIView.animateWithDuration(duration * Double(width / increment), delay: 0.0, options: [.CurveLinear], animations: { [weak self] () -> Void in
+                        if let sself = self {
+                            sself.ringStart = start + increment
+                        }
+                    }, completion: nil)
+                })
+                return
+            }
+            
+            UIView.animateWithDuration(duration, delay: 0, options: [.CurveLinear], animations: { [weak self] () -> Void in
+                if let sself = self {
+                    sself.ringStop = start + width + increment
+                    sself.ringStart = start + increment
+                }
+            }, completion: { (completed) -> Void in
+                if !completed {
+                    return
+                }
+                
+                start += increment
+                loop()
+            })
+        }
+        
+        ringStart = start
+        ringStop = start
+        
+        UIView.animateWithDuration(duration * Double(width / increment), delay: 0.0, options: [.CurveLinear], animations: { [weak self] () -> Void in
+            self?.ringStop = start + width
+        }, completion: { (completed) -> Void in
+            loop()
+        })
+    }
     
     private func addAction(forKey key: String, toValue: AnyObject?) {
         if let baseAction = super.actionForLayer(layer, forKey: "backgroundColor") as? CABasicAnimation {
@@ -107,4 +166,6 @@ import UIKit
         return DialLayer.self
     }
     
+    public override func drawRect(rect: CGRect) {}
+
 }
