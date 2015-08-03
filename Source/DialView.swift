@@ -37,7 +37,7 @@ import UIKit
         }
     }
     
-    @IBInspectable public var lineCap: CGLineCap? = .Round {
+    @IBInspectable public var lineCap: CGLineCap? = kCGLineCapRound {
         didSet {
             dialLayer.lineCap = lineCap
         }
@@ -75,6 +75,41 @@ import UIKit
 
     // MARK: Animation
     
+    private func _loop(var start: CGFloat, width: CGFloat, increment: CGFloat, duration: Double) {
+        ringStop = start + width
+        ringStart = start
+        
+        if !animating {
+            UIView.animateWithDuration(duration * (1 - Double(width / increment)), delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { [weak self] () -> Void in
+                if let sself = self {
+                    sself.ringStop = start + increment
+                    sself.ringStart = start + increment - width
+                }
+                }, completion: { (completed) -> Void in
+                    UIView.animateWithDuration(duration * Double(width / increment), delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { [weak self] () -> Void in
+                        if let sself = self {
+                            sself.ringStart = start + increment
+                        }
+                        }, completion: nil)
+            })
+            return
+        }
+        
+        UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { [weak self] () -> Void in
+            if let sself = self {
+                sself.ringStop = start + width + increment
+                sself.ringStart = start + increment
+            }
+            }, completion: { [weak self] (completed) -> Void in
+                if !completed {
+                    return
+                }
+                
+                start = start + increment
+                self?._loop(start, width: width, increment: increment, duration: duration)
+        })
+    }
+    
     private func beginAnimating() {
         let width: CGFloat = 3.14 / 2
         let increment: CGFloat = 6.28
@@ -82,48 +117,13 @@ import UIKit
         
         var start: CGFloat = 6.28 * 0.75
         
-        func loop() {
-            ringStop = start + width
-            ringStart = start
-
-            if !animating {
-                UIView.animateWithDuration(duration * (1 - Double(width / increment)), delay: 0.0, options: [.CurveLinear], animations: { [weak self] () -> Void in
-                    if let sself = self {
-                        sself.ringStop = start + increment
-                        sself.ringStart = start + increment - width
-                    }
-                }, completion: { (completed) -> Void in
-                    UIView.animateWithDuration(duration * Double(width / increment), delay: 0.0, options: [.CurveLinear], animations: { [weak self] () -> Void in
-                        if let sself = self {
-                            sself.ringStart = start + increment
-                        }
-                    }, completion: nil)
-                })
-                return
-            }
-            
-            UIView.animateWithDuration(duration, delay: 0, options: [.CurveLinear], animations: { [weak self] () -> Void in
-                if let sself = self {
-                    sself.ringStop = start + width + increment
-                    sself.ringStart = start + increment
-                }
-            }, completion: { (completed) -> Void in
-                if !completed {
-                    return
-                }
-                
-                start += increment
-                loop()
-            })
-        }
-        
         ringStart = start
         ringStop = start
         
-        UIView.animateWithDuration(duration * Double(width / increment), delay: 0.0, options: [.CurveLinear], animations: { [weak self] () -> Void in
+        UIView.animateWithDuration(duration * Double(width / increment), delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { [weak self] () -> Void in
             self?.ringStop = start + width
-        }, completion: { (completed) -> Void in
-            loop()
+        }, completion: { [weak self] (completed) -> Void in
+            self?._loop(start, width: width, increment: increment, duration: duration)
         })
     }
     
@@ -164,6 +164,26 @@ import UIKit
     
     public override static func layerClass() -> AnyClass {
         return DialLayer.self
+    }
+    
+    // MARK: Lifecycle
+    
+    private func setup() {
+        backgroundColor = UIColor.clearColor()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    public required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    public override func prepareForInterfaceBuilder() {
+        setup()
     }
     
     public override func drawRect(rect: CGRect) {}

@@ -38,7 +38,7 @@ public class DialLayer: CALayer {
     public var raceWidth: CGFloat = 0.0
     
     public var ringWidth: CGFloat = 10.0
-    public var lineCap: CGLineCap? = .Round
+    public var lineCap: CGLineCap? = kCGLineCapRound
     
     public var ringStart: CGFloat = 0.0
     public var ringStop: CGFloat = 0.0
@@ -60,7 +60,7 @@ public class DialLayer: CALayer {
         super.init()
     }
     
-    public required init?(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
