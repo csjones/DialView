@@ -151,6 +151,8 @@ import UIKit
             action.delegate = baseAction.delegate
 
             layer.addAnimation(action, forKey: key)
+        } else {
+            layer.setNeedsDisplay()
         }
     }
     
