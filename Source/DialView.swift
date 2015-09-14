@@ -131,7 +131,7 @@ import UIKit
         if let baseAction = super.actionForLayer(layer, forKey: "backgroundColor") as? CABasicAnimation {
             let action = CABasicAnimation(keyPath: key)
             
-            if let fromValue = dialLayer.presentationLayer()?.valueForKey(key) {
+            if let fromValue: AnyObject = dialLayer.presentationLayer()?.valueForKey(key) {
                 action.fromValue =  fromValue
             } else {
                 action.fromValue =  dialLayer.valueForKey(key)
