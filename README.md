@@ -4,9 +4,17 @@
 
 ![](Resources/Inspectables.png)
 
-## Installation 
+## Installation
 
 Add DialView manually or as a git submodule in your projects directory structure. Add `DialView.xcodeproj` to your project in Xcode and verify the deployment target matches that of your application target. Add `DialView.framework` as an embedded binary of your projects application target (Application Project -> Targets -> General -> Embedded Binaries).
+
+## Carthage
+
+To integrate Dial View into your project, add the following to your `Cartfile`:
+
+```ruby
+github "tylerwbell/DialView" "master"
+```
 
 ## License
 
